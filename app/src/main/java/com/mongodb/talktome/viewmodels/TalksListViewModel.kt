@@ -28,4 +28,14 @@ class TalksListViewModel(private var realm: Realm) : ViewModel() {
             }
         }
     }
+
+    fun removeTalk(talk: Talk) {
+        viewModelScope.launch(Dispatchers.IO) {
+            realm.write {
+                findLatest(talk)?.also {
+                    delete(it)
+                }
+            }
+        }
+    }
 }

@@ -7,21 +7,16 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.mongodb.talktome.model.Talk
 import com.mongodb.talktome.ui.theme.TalkToMeTheme
 import com.mongodb.talktome.viewmodels.TalksListViewModel
 import com.mongodb.talktome.views.TalksListView
 import io.realm.kotlin.Realm
-import io.realm.kotlin.RealmConfiguration
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val config = RealmConfiguration.Builder(schema = setOf(Talk::class))
-            .deleteRealmIfMigrationNeeded()
-            .build()
-        val realm: Realm = Realm.open(config)
+        val realm: Realm = (application as? TalkToMeApp)?.realm !!
         val viewModel = TalksListViewModel(realm = realm)
         setContent {
             TalkToMeTheme {

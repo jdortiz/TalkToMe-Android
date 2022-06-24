@@ -13,21 +13,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class TalksListViewModel(private var realm: Realm) : ViewModel() {
+class TalksListViewModel(var realm: Realm) : ViewModel() {
     val talks: LiveData<List<Talk>> = getAllTalks().map { it.list }.asLiveData()
-    private var counter = 0
 
     private fun getAllTalks(): Flow<ResultsChange<Talk>> =
         realm.query<Talk>().asFlow()
-
-    fun addButtonTapped() {
-        counter++
-        viewModelScope.launch(Dispatchers.IO) {
-            realm.write {
-                copyToRealm(Talk(title = "Talk $counter", speaker = "Speaker $counter"))
-            }
-        }
-    }
 
     fun removeTalk(talk: Talk) {
         viewModelScope.launch(Dispatchers.IO) {

@@ -2,7 +2,7 @@ buildscript {
     ext {
         kotlin_version           = '1.6.10'
         ktlint_gradle_version    = '10.3.0'
-        android_gradle_version   = '7.2.1'
+        android_gradle_version   = '7.4.2'
 
         activity_version         = '1.4.0'
         appcompat_version        = '1.4.2'

@@ -13,12 +13,14 @@ class TalkToMeApp : Application() {
     lateinit var realm: Realm
 
     companion object {
-        const val APP_ID = "application-0-guxux"
+        const val APP_ID = "application-id"
+
     }
 
     override fun onCreate() {
         super.onCreate()
         val app = App.create(APP_ID)
+        println("Hello")
         runBlocking {
             val user = app.login(Credentials.anonymous())
             val config = SyncConfiguration.Builder(

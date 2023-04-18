@@ -76,7 +76,7 @@ fun TalksListView(viewModel: TalksListViewModel) {
 fun TalksList(viewModel: TalksListViewModel) {
     val talks by viewModel.talks.observeAsState(emptyList())
     LazyColumn {
-        items(items = talks, key = { talk -> talk._id }) { talk ->
+        items(items = talks) { talk ->
             val dismissState = rememberDismissState()
             if (dismissState.isDismissed(DismissDirection.EndToStart)) {
                 viewModel.removeTalk(talk)

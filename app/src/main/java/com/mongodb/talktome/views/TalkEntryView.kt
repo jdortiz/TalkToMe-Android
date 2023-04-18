@@ -126,7 +126,7 @@ fun CustomTextField(text: MutableState<String>, placeholder: String, leadingImag
                 tint = MaterialTheme.colors.secondary,
             )
         },
-        placeholder = { Text(text = "Speaker name") },
+        placeholder = { Text(text = placeholder) },
         value = text.value,
         keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
         onValueChange = {

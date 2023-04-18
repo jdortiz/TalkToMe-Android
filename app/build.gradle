@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.mongodb.talktome"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -48,6 +48,9 @@ android {
 }
 
 dependencies {
+
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+
     implementation "androidx.activity:activity-compose:$activity_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.activity:activity-compose:$activity_compose_version"

@@ -1,6 +1,5 @@
 package com.mongodb.talktome.model
 
-
 import io.realm.kotlin.types.RealmInstant
 import io.realm.kotlin.types.RealmObject
 import io.realm.kotlin.types.annotations.PrimaryKey
@@ -13,7 +12,7 @@ class Talk() : RealmObject {
     var speaker: String = ""
     private var proposedDate = RealmInstant.now()
     var scheduledDate: RealmInstant? = null
-
+    var ownerId: String? = null
     constructor(title: String, speaker: String) : this() {
         this.title = title
         this.speaker = speaker
